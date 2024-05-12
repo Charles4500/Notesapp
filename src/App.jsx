@@ -10,15 +10,17 @@ function App() {
     <div className="app">
       <AddNote
         note={note}
+        notesBody={notesBody}
         setNote={setNote}
         setNoteBody={setNoteBody}
-        notesBody={notesBody}
         currentEditedNote={currentEditedNote}
+        setCurrentEditedNote = {setCurrentEditedNote}
       />
       <DisplayItems
         notesBody={notesBody}
         setCurrentEditedNote={setCurrentEditedNote}
         setNoteBody={setNoteBody}
+        setNote ={setNote}
       />
     </div>
   );

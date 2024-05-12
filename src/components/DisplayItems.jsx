@@ -1,21 +1,30 @@
 import '../components/style.css';
-function DisplayItems({ notesBody, setCurrentEditedNote, setNoteBody }) {
+function DisplayItems({ notesBody,setNote, setCurrentEditedNote, setNoteBody }) {
   function handleEdit(getCurrentItem) {
     console.log(getCurrentItem);
     setCurrentEditedNote(getCurrentItem);
-    setNoteBody(getCurrentItem.label);
+    setNote(getCurrentItem.label);
+  }
+  function handleDelete(getCurrentId) {
+    console.log(getCurrentId);
+    setNoteBody(notesBody.filter(item => item.id !== getCurrentId))
   }
   return (
     <ul className="list">
       {notesBody && notesBody.length > 0 ? (
-        notesBody.map((noteItem) => (
-          <li className="li" key={noteItem.id}>
-            <label className="label">{noteItem.label}</label>
+        notesBody.map((noteBody) => (
+          <li className="li" key={noteBody.id}>
+            <label className="label">{noteBody.label}</label>
             <div className="div">
-              <button onClick={() => handleEdit(noteItem)} className="btn">
+              <button onClick={() => handleEdit(noteBody)} className="btn">
                 Edit
               </button>
-              <button className="btn2">Delete</button>
+              <button
+                className="btn2"
+                onClick={() => handleDelete(noteBody.id)}
+              >
+                Delete
+              </button>
             </div>
           </li>
         ))
