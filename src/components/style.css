@@ -1,0 +1,28 @@
+.App {
+  height: -calc(100% - 40px);
+  padding: 20px 0px;
+  max-width: 600px;
+  width: 600px;
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.input {
+  width: 400px;
+  padding: 15px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  font-size: 20px;
+}
+.button {
+  padding: 0px.28px;
+  border: none;
+  border-radius: 4px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
