@@ -1,18 +1,19 @@
+import '../components/style.css'
 function DisplayItems({ notesBody }) {
   return (
-    <ul>
+    <ul className='list'>
       {notesBody && notesBody.length > 0 ? (
         notesBody.map((notesItem) => (
-          <li key={notesItem.id}>
-            <label>{notesItem.label}</label>
-            <div>
-              <button>Edit</button>
-              <button>Delete</button>
+          <li className='li' key={notesItem.id}>
+            <label className='label'>{notesItem.label}</label>
+            <div className='div'>
+              <button className='btn'>Edit</button>
+              <button className='btn2'>Delete</button>
             </div>
           </li>
         ))
       ) : (
-        <div>No notes Added</div>
+        <div className='notes'>No notes Added</div>
       )}
     </ul>
   );
