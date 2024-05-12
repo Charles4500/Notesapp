@@ -1,17 +1,29 @@
 import React from 'react';
 import '../components/style.css';
 
-function AddNote({setNote,note,notesBody,setNoteBody}) {console.log(notesBody,note);
- function handleSubmit(e){
-e.preventDefault();
+function AddNote({ setNote, note, notesBody, setNoteBody, currentEditedNote }) {
+  console.log(notesBody, note);
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!!currentEditedNote) {
+      const findCurrentEditedNote = notesBody.findIndex(
+        (item) => item.id === currentEditedNote.id
+      );
+      console.log(findCurrentEditedNote);
+      notesBody[findCurrentEditedNote] = {
+        ...notesBody[findCurrentEditedNote],
+        label: note,
+      };
+    } else {
+      notesBody.push({
+        id: notesBody.length + 1,
+        label: note,
+      });
+    }
 
-notesBody.push({
-  id: notesBody.length + 1,
-  label: note,
-});
-setNoteBody(notesBody);
-setNote('');
- }
+    setNoteBody(notesBody);
+    setNote('');
+  }
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
@@ -23,8 +35,9 @@ setNote('');
           value={note || ''}
           onChange={(e) => setNote(e.target.value)}
         />
-        <button type='submit'
-        className="button">Add Note</button>
+        <button type="submit" className="button">
+          {!!currentEditedNote ? 'Edit Note' : 'Add Note'}
+        </button>
       </form>
     </div>
   );
